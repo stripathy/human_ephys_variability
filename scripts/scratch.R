@@ -66,7 +66,7 @@ spiny_layer_histo = aibs_human_ephys %>% mutate(structure_layer_name_formal = pa
 
 basic_histos = plot_grid(basic_cell_histo, spiny_layer_histo, nrow = 2, rel_heights = c(1, 2))
 
-ggsave('figures/basic_histograms.png', plot = basic_histos, width = 6, height = 8)
+ggsave('figures/basic_histograms.pdf', plot = basic_histos, width = 6, height = 8)
 
 ### plot ephys measures per subject for just spiny / pyramidal cells
 sag_vs_donor_id = aibs_human_ephys %>% filter(dendrite_type %in% c('spiny')) %>% 
@@ -82,7 +82,7 @@ apvel_vs_donor_id = aibs_human_ephys %>% filter(dendrite_type %in% c('spiny')) %
   guides(color=guide_legend(title = "Cortical layer"))
 
 ephys_by_donors = plot_grid(sag_vs_donor_id, apvel_vs_donor_id, nrow = 2, align = "v")
-ggsave('figures/ephys_by_donors.png', plot = ephys_by_donors, width = 10, height = 10)
+ggsave('figures/ephys_by_donors.pdf', plot = ephys_by_donors, width = 10, height = 10)
 
 
 ### attempt to use mixed effects models to regress out metadata, including demographic and cell type variables
@@ -110,5 +110,5 @@ apvel_resids_vs_donor_id = apvel_data_frame %>% filter(dendrite_type %in% c('spi
 
 
 ephys_by_donors_resids = plot_grid(sag_resids_vs_donor_id, apvel_resids_vs_donor_id, nrow = 2, align = "v")
-ggsave('figures/ephys_by_donors_resids.png', plot = ephys_by_donors_resids, width = 10, height = 10)
+ggsave('figures/ephys_by_donors_resids.pdf', plot = ephys_by_donors_resids, width = 10, height = 10)
 
